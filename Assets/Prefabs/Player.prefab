@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 224925573781325232}
   - component: {fileID: 222368015075609294}
   - component: {fileID: 114592468977029880}
+  - component: {fileID: 114524591945883968}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -353,6 +354,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ee162574ca7419496be2fcde33cc3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1647784176713006, guid: 194fe2d298bc045fd88d53291407266b,
+    type: 2}
+  bulletSpawn: {fileID: 4410400785272134}
+  isLocalPlayer: 0
 --- !u!114 &114029857836361970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -429,6 +434,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114524591945883968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527612780901060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9686182cf8844048ecee9ab45b296a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyOnDeath: 0
+  currentHealth: 100
+  isEnemy: 0
+  healthBar: {fileID: 224108157217968168}
 --- !u!114 &114592468977029880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -488,6 +508,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9686182cf8844048ecee9ab45b296a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyOnDeath: 0
+  currentHealth: 90
+  isEnemy: 0
+  healthBar: {fileID: 0}
 --- !u!136 &136525807212371562
 CapsuleCollider:
   m_ObjectHideFlags: 1

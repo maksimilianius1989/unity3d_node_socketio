@@ -168,6 +168,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6953d11b98c44cc88ff26fdcb470799, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &198737840 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224108157217968168, guid: d54787ee820f949b39fe0ef0e6e63fc6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1548245775}
 --- !u!1 &261416407
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +347,41 @@ Transform:
   m_PrefabParentObject: {fileID: 4410400785272134, guid: d54787ee820f949b39fe0ef0e6e63fc6,
     type: 2}
   m_PrefabInternal: {fileID: 1548245775}
+--- !u!1 &937573813 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1527612780901060, guid: d54787ee820f949b39fe0ef0e6e63fc6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1548245775}
+--- !u!114 &937573814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 937573813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9686182cf8844048ecee9ab45b296a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyOnDeath: 0
+  currentHealth: 100
+  isEnemy: 0
+  healthBar: {fileID: 198737840}
+--- !u!114 &937573815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 937573813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ee162574ca7419496be2fcde33cc3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1647784176713006, guid: 194fe2d298bc045fd88d53291407266b,
+    type: 2}
+  bulletSpawn: {fileID: 358014506}
+  isLocalPlayer: 1
 --- !u!1001 &1161803279
 Prefab:
   m_ObjectHideFlags: 0
