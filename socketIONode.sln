@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "socketIONode", "Assembly-CSharp.csproj", "{114784F1-EAA9-11DC-8E72-A7D0BFECA664}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{114784F1-EAA9-11DC-8E72-A7D0BFECA664}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
