@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+public class Bullet : MonoBehaviour
+{
+    [HideInInspector]
+    public GameObject playerFrom;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnCollisionEnter(Collision collision)
+    {
+        var hit = collision.gameObject;
+        var health = hit.GetComponent<Health>();
+        if (health != null)
+        {
+            health.TakeDomage(playerFrom, 10);
+        }
+        
+        Destroy(gameObject);
+    }
 }

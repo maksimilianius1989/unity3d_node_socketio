@@ -389,6 +389,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9686182cf8844048ecee9ab45b296a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyOnDeath: 0
+  currentHealth: 100
+  isEnemy: 1
+  healthBar: {fileID: 224340748502681284}
 --- !u!114 &114498199180699340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,6 +420,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ee162574ca7419496be2fcde33cc3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1647784176713006, guid: 194fe2d298bc045fd88d53291407266b,
+    type: 2}
+  bulletSpawn: {fileID: 0}
+  isLocalPlayer: 0
 --- !u!114 &114854380930271988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -528,7 +536,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1581707011936088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.00011444092, y: 0.0000014305115, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224957716669935138}
@@ -546,7 +554,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1589585547997940}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224780279632486702}
@@ -564,7 +572,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1740846296787562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 224483863991096296}
