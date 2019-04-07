@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.Rider2018.3/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2018.3/system/resharper-host/local/Transient/ReSharperHost/v183/SolutionCaches/_socketIONode.1602191207.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.Rider2018.3/system/resharper-host/local/Transient/ReSharperHost/v183/SolutionCaches/_socketIONode.-1616781637.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets/Scripts" t="Include">
@@ -15,9 +15,25 @@
         <e p="PlayerSpawner.cs" t="Include" />
         <e p="SpawnPoint.cs" t="Include" />
       </e>
+      <e p="Assets/nodeGameServer" t="Include">
+        <e p="node_modules" t="Include">
+          <e p="wtf-8" t="Include">
+            <e p="LICENSE-MIT.txt" t="Include" />
+          </e>
+          <e p="xmlhttprequest-ssl" t="Include">
+            <e p="tests" t="Include">
+              <e p="testdata.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="Library" t="ExcludeRecursive" />
       <e p="Temp" t="ExcludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+      </e>
+      <e p="nodeGameServer/node_modules" t="ExcludeRecursive">
+        <e p="express" t="IncludeRecursive" />
+        <e p="socket.io" t="IncludeRecursive" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
