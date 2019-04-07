@@ -41,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
 			Health h = newEnemy.GetComponent<Health>();
 			h.currentHealth = 100;
 			h.OnChangeHealth();
+			h.destroyOnDeath = true;
 			h.isEnemy = true;
 			i++;
 		}
