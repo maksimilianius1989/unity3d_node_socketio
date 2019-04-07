@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 136525807212371562}
   - component: {fileID: 23418892119349638}
   - component: {fileID: 114022330441029754}
-  - component: {fileID: 114841544450168024}
+  - component: {fileID: 114171981523360238}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -144,7 +144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4329472735158404}
   - component: {fileID: 33374281603998166}
-  - component: {fileID: 136560754865042742}
   - component: {fileID: 23074847047787682}
   m_Layer: 0
   m_Name: Gun
@@ -358,7 +357,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1647784176713006, guid: 194fe2d298bc045fd88d53291407266b,
     type: 2}
   bulletSpawn: {fileID: 4410400785272134}
-  isLocalPlayer: 0
+  isLocalPlayer: 1
 --- !u!114 &114029857836361970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,6 +385,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114171981523360238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127972807490064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9686182cf8844048ecee9ab45b296a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyOnDeath: 0
+  currentHealth: 100
+  isEnemy: 0
+  healthBar: {fileID: 224108157217968168}
 --- !u!114 &114216438560463654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -513,40 +527,12 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114841544450168024
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1127972807490064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e9686182cf8844048ecee9ab45b296a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyOnDeath: 0
-  currentHealth: 90
-  isEnemy: 0
-  healthBar: {fileID: 0}
 --- !u!136 &136525807212371562
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127972807490064}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136560754865042742
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1734979045027168}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -599,7 +585,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1696437345057352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00011444092, y: 0.0000014305115, z: 0}
+  m_LocalPosition: {x: -50.00012, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224925573781325232}
@@ -607,9 +593,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 49.999886, y: 0.0000014305115}
+  m_AnchoredPosition: {x: -0.000118255615, y: 0}
   m_SizeDelta: {x: 100, y: 10}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &224537268777029044
 RectTransform:
   m_ObjectHideFlags: 1

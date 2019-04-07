@@ -17,12 +17,16 @@ public class Health : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 		PlayerController pc = GetComponent<PlayerController>();
-		isLocalPlayer = pc.isLocalPlayer;
+		if (pc != null)
+		{
+			isLocalPlayer = pc.isLocalPlayer;
+		}
 	}
 
 	public void TakeDomage(GameObject playerFrom, int amount)
 	{
 		currentHealth -= amount;
+		OnChangeHealth();
 	}
 
 	public void OnChangeHealth()
