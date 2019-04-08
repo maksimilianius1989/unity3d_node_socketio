@@ -74,6 +74,71 @@ io.on('connection', function(socket) {
 
         socket.broadcast.emit('other player connected', currentPlayer);
     });
+    
+    socket.on('player move', function(data) {
+        console.log('recv: move: ' + JSON.stringify(data));
+        currentPlayer.position = data.position;
+        socket.broadcast.emit('player move', currentPlayer);
+    });
+    
+    socket.on('player turn', function(data) {
+        console.log('recv: turn: ' + JSON.stringify(data));
+        currentPlayer.rotation = data.rotation;
+        socket.broadcast.emit('player turn', currentPlayer);
+    });
+    
+    socket.on('player shoot', function() {
+        console.log(currentPlayer.name + ' recv: shoot');
+        var data = {
+            name: currentPlayer.name
+        };
+        console.log(currentPlayer.name + ' bcst: shoot: ' + JSON.stringify(data));
+        socket.emit('player shoot', data);
+        socket.broadcast.emit('player shoot', data);
+    });
+    
+    socket.on('health', function(data) {
+        console.log(currentPlayer.name + ' recv: health: ' + JSON.stringify(data));
+        if (data.from === currentPlayer.name) {
+            var indexDamaged = 0;
+            if (!data.isEnemy) {
+                clients = clients.map(function(client, index) {
+                    if (client.name === data.name) {
+                        indexDamaged = index;
+                        client.health -= data.healthChange;
+                    }
+                    return client;
+                });
+            } else {
+                enemies = enemies.map(function(enemy, index) {
+                    if (enemy.name === data.name) {
+                        indexDamaged = index;
+                        enemy.health -= data.healthChange;
+                    }
+                    return enemy;
+                });
+            }
+            
+            var response = {
+                name: (!data.isEnemy) ? clients[indexDamaged].name : enemies[indexDamaged].name,
+                health: (!data.isEnemy) ? clients[indexDamaged].health : enemies[indexDamaged].health
+            }
+            console.log(currentPlayer.name + ' bcst: health: ' + JSON.stringify(response));
+            socket.emit('health', response);
+            socket.broadcast.emit('health', response);
+        }
+    });
+    
+    socket.on('disconnect', function() {
+        console.log(currentPlayer.name + ' recv: disconnect ' + currentPlayer.name);
+        socket.broadcast.emit('other player disconnected', currentPlayer);
+        console.log(currentPlayer.name + ' bcst: other player disconnected ' + JSON.stringify(currentPlayer));
+        for (var i = 0; i < clients.length; i++) {
+            if (clients[i].name === currentPlayer.name) {
+                clients.splice(i, 1);
+            } 
+        }
+    });
 });
 
 console.log('--- server working ---');
