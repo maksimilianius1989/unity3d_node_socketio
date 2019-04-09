@@ -37,7 +37,7 @@ io.on('connection', function(socket) {
         if(clients.length === 0) {
             numberOfEnemies = data.enemySpawnPoints.length;
             enemies = [];
-            data.enemmySpawnPoints.forEach(function(enemySpawnPoint) {
+            data.enemySpawnPoints.forEach(function(enemySpawnPoint) {
                 var enemy = {
                     name: guid(),
                     position: enemySpawnPoint.position,
@@ -61,9 +61,10 @@ io.on('connection', function(socket) {
         };
         console.log(currentPlayer.name + ' emit: enemies: ' + JSON.stringify(enemiesResponse));
         socket.emit('enemies', enemiesResponse);
-        var randomSpawnPoint = playerSpawnPoints[Math.floor(Math.random() + playerSpawnPoints.length)];
+        var randomNumber = Math.floor(Math.random() + (playerSpawnPoints.length - 1));
+        var randomSpawnPoint = playerSpawnPoints[randomNumber];
         currentPlayer = {
-            name: date.name,
+            name: data.name,
             position: randomSpawnPoint.position,
             rotation: randomSpawnPoint.rotation,
             health: 100

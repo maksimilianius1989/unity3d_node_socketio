@@ -57,8 +57,10 @@ public class NetworkManager : MonoBehaviour
 		List<SpawnPoint> playerSpawnPoints = GetComponent<PlayerSpawner>().playerSpawnPoints;
 		List<SpawnPoint> enemySpawnPoints = GetComponent<EnemySpawner>().enemySpawnPoints;
 		PlayerJSON playerJson = new PlayerJSON(playerName, playerSpawnPoints, enemySpawnPoints);
-		string data = JsonUtility.ToJson(playerName);
-		socket.Emit("play", new JSONObject(data));
+		string data = JsonUtility.ToJson(playerJson);
+
+		JSONObject dataJson = new JSONObject(data);
+		socket.Emit("play", dataJson);
 		canvas.gameObject.SetActive(false);
 	}
 	
@@ -66,7 +68,9 @@ public class NetworkManager : MonoBehaviour
 
 	void OnEnemies(SocketIOEvent socketIoEvent)
 	{
-		
+		EnemiesJSON enemiesJson = EnemiesJSON.CreateFromJSON(socketIoEvent.data.ToString());
+		EnemySpawner es = GetComponent<EnemySpawner>();
+		es.SpawnEnemies(enemiesJson);
 	}
 	
 	void OnOtherPlayerConnected(SocketIOEvent socketIoEvent)
@@ -169,23 +173,23 @@ public class NetworkManager : MonoBehaviour
 	[Serializable]
 	public class PointJSON
 	{
-		public float[] position;
-		public float[] rotation;
+		public string[] position;
+		public string[] rotation;
 	
 		public PointJSON(SpawnPoint spawnPoint)
 		{
-			position = new float[]
+			position = new string[]
 			{
-				spawnPoint.transform.position.x,
-				spawnPoint.transform.position.y,
-				spawnPoint.transform.position.z
+				spawnPoint.transform.position.x.ToString(),
+				spawnPoint.transform.position.y.ToString(),
+				spawnPoint.transform.position.z.ToString()
 			};
 			
-			rotation = new float[]
+			rotation = new string[]
 			{
-				spawnPoint.transform.eulerAngles.x,
-				spawnPoint.transform.eulerAngles.y,
-				spawnPoint.transform.eulerAngles.z
+				spawnPoint.transform.eulerAngles.x.ToString(),
+				spawnPoint.transform.eulerAngles.y.ToString(),
+				spawnPoint.transform.eulerAngles.z.ToString()
 			};	
 		}
 	}

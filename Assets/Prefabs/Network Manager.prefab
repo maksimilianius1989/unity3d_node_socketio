@@ -53,6 +53,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ad791a21df64441b1bee8553f01e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 1398753760901568, guid: c6ed392f33a2144ba85b044b181b8bb2, type: 2}
+  spawnPoint: {fileID: 1543497711807748, guid: c6953d11b98c44cc88ff26fdcb470799, type: 2}
+  numberOfEnemies: 4
+  enemySpawnPoints: []
 --- !u!114 &114415403693149210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64,6 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ccffb86bc744dd7858a3fff9e521a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  socket: {fileID: 0}
+  playerNameInput: {fileID: 0}
+  player: {fileID: 1127972807490064, guid: d54787ee820f949b39fe0ef0e6e63fc6, type: 2}
 --- !u!114 &114477023454259350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,3 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5827b4ac2bf254e659fedd5023f3961a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
