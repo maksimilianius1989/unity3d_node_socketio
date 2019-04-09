@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework.Constraints;
 using SocketIO;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviour
@@ -137,7 +135,10 @@ public class NetworkManager : MonoBehaviour
 	
 	void OnOtherPlayerDisconnected(SocketIOEvent socketIoEvent)
 	{
-		
+		print("user disconnected");
+		string data = socketIoEvent.data.ToString();
+		UserJSON userJson = UserJSON.CreateFromJSON(data);
+		Destroy(GameObject.Find(userJson.name));
 	}
 	
 	#endregion
