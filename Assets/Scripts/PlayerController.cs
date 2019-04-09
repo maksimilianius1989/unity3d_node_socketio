@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class PlayerController : MonoBehaviour
 {
 	public GameObject bulletPrefab;
 	public Transform bulletSpawn;
-	public bool isLocalPlayer = true;
+	public bool isLocalPlayer = false;
 
 	private Vector3 oldPosition;
 	private Vector3 currentPosition;
@@ -42,11 +43,13 @@ public class PlayerController : MonoBehaviour
 
 		if (currentPosition != oldPosition)
 		{
+			NetworkManager.instance.GetComponent<NetworkManager>().CommandMove(transform.position);
 			oldPosition = currentPosition;
 		}
 
 		if (currentRotation != oldRotation)
 		{
+			NetworkManager.instance.GetComponent<NetworkManager>().CommandRotate(transform.rotation);
 			oldRotation = currentRotation;
 		}
 

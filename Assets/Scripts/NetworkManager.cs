@@ -43,6 +43,8 @@ public class NetworkManager : MonoBehaviour
 		StartCoroutine(ConnectToServer());
 	}
 
+	#region Commands
+	
 	IEnumerator ConnectToServer()
 	{
 		yield return new WaitForSeconds(0.5f);
@@ -61,6 +63,20 @@ public class NetworkManager : MonoBehaviour
 		socket.Emit("play", dataJson);
 		canvas.gameObject.SetActive(false);
 	}
+
+	public void CommandMove(Vector3 vector3)
+	{
+		string data = JsonUtility.ToJson(new PositionJSON(vector3));
+		socket.Emit("player move", new JSONObject(data));
+	}
+
+	public void CommandRotate(Quaternion quaternion)
+	{
+		string data = JsonUtility.ToJson(new RotationJSON(quaternion));
+		socket.Emit("player turn", new JSONObject(data));
+	}
+	
+	#endregion
 	
 	#region Listining
 
@@ -85,7 +101,7 @@ public class NetworkManager : MonoBehaviour
 		}
 		GameObject p = Instantiate(player, position, rotation) as GameObject;
 		PlayerController pc = p.GetComponent<PlayerController>();
-		Transform t = p.transform.Find("Healthbar Canvas");
+		Transform t = p.transform.Find("Halthbar Canvas");
 		Transform t1 = t.transform.Find("Player Name");
 		Text playerName = t1.GetComponent<Text>();
 		playerName.text = userJson.name;
@@ -115,12 +131,35 @@ public class NetworkManager : MonoBehaviour
 	
 	void OnPlayerMove(SocketIOEvent socketIoEvent)
 	{
-		
+		string data = socketIoEvent.data.ToString();
+		UserJSON userJson = UserJSON.CreateFromJSON(data);
+		Vector3 position = new Vector3(userJson.position[0], userJson.position[1], userJson.position[2]);
+		if (userJson.name == playerNameInput.text)
+		{
+			return;
+		}
+
+		GameObject p = GameObject.Find(userJson.name) as GameObject;
+		if (p != null)
+		{
+			p.transform.position = position;
+		}
 	}
 	
 	void OnPlayerTurn(SocketIOEvent socketIoEvent)
 	{
-		
+		string data = socketIoEvent.data.ToString();
+		UserJSON userJson = UserJSON.CreateFromJSON(data);
+		Quaternion rotation = Quaternion.Euler(userJson.rotation[0], userJson.rotation[1], userJson.rotation[2]);
+		if (userJson.name == playerNameInput.text)
+		{
+			return;
+		}
+		GameObject p = GameObject.Find(userJson.name) as GameObject;
+		if (p != null)
+		{
+			p.transform.rotation = rotation;
+		}
 	}
 	
 	void OnPlayerShoot(SocketIOEvent socketIoEvent)
@@ -198,15 +237,15 @@ public class NetworkManager : MonoBehaviour
 	[Serializable]
 	public class PositionJSON
 	{
-		public float[] positoin;
+		public string[] position;
 
 		public PositionJSON(Vector3 _position)
 		{
-			positoin = new float[]
+			position = new string[]
 			{
-				_position.x,
-				_position.y,
-				_position.z
+				_position.x.ToString(),
+				_position.y.ToString(),
+				_position.z.ToString()
 			};
 		}
 	}
@@ -214,15 +253,15 @@ public class NetworkManager : MonoBehaviour
 	[Serializable]
 	public class RotationJSON
 	{
-		public float[] rotation;
+		public string[] rotation;
 
 		public RotationJSON(Quaternion _rotation)
 		{
-			rotation = new float[]
+			rotation = new string[]
 			{
-				_rotation.eulerAngles.x,
-				_rotation.eulerAngles.y,
-				_rotation.eulerAngles.z
+				_rotation.eulerAngles.x.ToString(),
+				_rotation.eulerAngles.y.ToString(),
+				_rotation.eulerAngles.z.ToString()
 			};
 		}
 	}

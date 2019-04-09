@@ -81,6 +81,7 @@ io.on('connection', function(socket) {
         console.log('recv: move: ' + JSON.stringify(data));
         currentPlayer.position = data.position;
         socket.broadcast.emit('player move', currentPlayer);
+        console.log("broadcast");
     });
     
     socket.on('player turn', function(data) {
