@@ -75,6 +75,12 @@ public class NetworkManager : MonoBehaviour
 		string data = JsonUtility.ToJson(new RotationJSON(quaternion));
 		socket.Emit("player turn", new JSONObject(data));
 	}
+
+	public void CommandShoot()
+	{
+		print("shoot");
+		socket.Emit("player shoot");
+	}
 	
 	#endregion
 	
@@ -164,7 +170,11 @@ public class NetworkManager : MonoBehaviour
 	
 	void OnPlayerShoot(SocketIOEvent socketIoEvent)
 	{
-		
+		string data = socketIoEvent.data.ToString();
+		ShootJSON shootJson = ShootJSON.CreateFromJSON(data);
+		GameObject p = GameObject.Find(shootJson.name);
+		PlayerController pc = p.GetComponent<PlayerController>();
+		pc.CmdFire();
 	}
 	
 	void OnHealth(SocketIOEvent socketIoEvent)

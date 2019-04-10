@@ -55,7 +55,8 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			CmdFire();
+			NetworkManager n = NetworkManager.instance.GetComponent<NetworkManager>();
+			n.CommandShoot();
 		}
 	}
 
