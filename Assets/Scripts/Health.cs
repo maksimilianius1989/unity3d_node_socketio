@@ -23,15 +23,17 @@ public class Health : MonoBehaviour
 		}
 	}
 
-	public void TakeDomage(GameObject playerFrom, int amount)
+	public void TakeDamage(GameObject playerFrom, int amount)
 	{
 		currentHealth -= amount;
-		OnChangeHealth();
+//		OnChangeHealth();
+		NetworkManager n = NetworkManager.instance.GetComponent<NetworkManager>();
+		n.CommandHealthChange(playerFrom, this.gameObject, amount, isEnemy);
 	}
 
 	public void OnChangeHealth()
 	{
-		healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
+		healthBar.sizeDelta = new Vector2((float)currentHealth, healthBar.sizeDelta.y);
 		if (currentHealth <= 0)
 		{
 			if (destroyOnDeath)

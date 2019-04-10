@@ -107,6 +107,9 @@ io.on('connection', function(socket) {
             if (!data.isEnemy) {
                 clients = clients.map(function(client, index) {
                     if (client.name === data.name) {
+                        if (client.health <= 0) {
+                            client.health = 100;
+                        }
                         indexDamaged = index;
                         client.health -= data.healthChange;
                     }
