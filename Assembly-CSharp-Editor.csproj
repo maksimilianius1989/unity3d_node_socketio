@@ -216,6 +216,7 @@
     <Compile Include="Assets\SocketIO\JSONObject\Editor\JSONChecker.cs" />
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />
     <None Include="Assets\SocketIO\Readme.txt" />
+    <None Include="Assets\JsonDotNet\link.xml" />
     <Reference Include="Facebook.Unity.Settings">
       <HintPath>/media/vimax/HDD/Projects/unityV2/unity3d_node_socketio/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
     </Reference>
@@ -308,6 +309,9 @@
     </Reference>
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>/media/vimax/HDD/Projects/unityV2/unity3d_node_socketio/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>/media/vimax/HDD/Projects/unityV2/unity3d_node_socketio/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>/home/vimax/.config/unity3d/cache/packages/packages.unity.com/com.unity.ads@1.0.1/UnityEngine.Advertisements.dll</HintPath>
