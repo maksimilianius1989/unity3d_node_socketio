@@ -277,6 +277,14 @@ public class NetworkManager : MonoBehaviour
 	}
 
 	[Serializable]
+	public class BaseUser
+	{
+		public string name;
+		public string[] position;
+		public string[] rotation;
+		public int health;
+	}
+	
 	public class UserJSON
 	{
 		public string name;
@@ -286,7 +294,24 @@ public class NetworkManager : MonoBehaviour
 
 		public static UserJSON CreateFromJSON(string data)
 		{
-			return JsonUtility.FromJson<UserJSON>(data);
+			var baseUser = JsonUtility.FromJson<BaseUser>(data);
+			
+			UserJSON userJson = new UserJSON();
+			userJson.name = baseUser.name;
+			userJson.health = baseUser.health;
+			userJson.position = new float[3];
+			userJson.rotation = new float[3];
+			for (int i = 0; i < baseUser.position.Length; i++)
+			{
+				userJson.position[i] = float.Parse(baseUser.position[i]);
+			}
+
+			for (int i = 0; i < baseUser.rotation.Length; i++)
+			{
+				userJson.rotation[i] = float.Parse(baseUser.rotation[i]);
+			}
+			
+			return userJson;
 		}
 	}
 
