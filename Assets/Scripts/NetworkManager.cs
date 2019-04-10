@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using SocketIO;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviour
@@ -88,7 +90,8 @@ public class NetworkManager : MonoBehaviour
 
 	void OnEnemies(SocketIOEvent socketIoEvent)
 	{
-		EnemiesJSON enemiesJson = EnemiesJSON.CreateFromJSON(socketIoEvent.data.ToString());
+		string data = socketIoEvent.data.ToString();
+		EnemiesJSON enemiesJson = EnemiesJSON.CreateFromJSON(data);
 		EnemySpawner es = GetComponent<EnemySpawner>();
 		es.SpawnEnemies(enemiesJson);
 	}
@@ -335,11 +338,36 @@ public class NetworkManager : MonoBehaviour
 	[Serializable]
 	public class EnemiesJSON
 	{
-		public List<UserJSON> enemies;
+		public List<BaseUser> enemies;
+		
+		public List<UserJSON> enemyPlayers;
 
 		public static EnemiesJSON CreateFromJSON(string data)
 		{
-			return JsonUtility.FromJson<EnemiesJSON>(data);
+			var enimalsJson = JsonUtility.FromJson<EnemiesJSON>(data);
+			enimalsJson.enemyPlayers = new List<UserJSON>();
+
+			foreach (BaseUser baseEnemy in enimalsJson.enemies)
+			{
+				UserJSON someEnemyPlayer = new UserJSON();
+				someEnemyPlayer.name = baseEnemy.name;
+				someEnemyPlayer.health = baseEnemy.health;
+				someEnemyPlayer.position = new float[3];
+				someEnemyPlayer.rotation = new float[3];
+				for (int i = 0; i < baseEnemy.position.Length; i++)
+				{
+					someEnemyPlayer.position[i] = float.Parse(baseEnemy.position[i]);
+				}
+
+				for (int i = 0; i < baseEnemy.rotation.Length; i++)
+				{
+					someEnemyPlayer.rotation[i] = float.Parse(baseEnemy.position[i]);
+				}
+				
+				enimalsJson.enemyPlayers.Add(someEnemyPlayer);
+			}
+			
+			return enimalsJson;
 		}
 	}
 

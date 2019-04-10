@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
 
 	public void SpawnEnemies(NetworkManager.EnemiesJSON enemiesJson)
 	{
-		foreach (NetworkManager.UserJSON enemyJSON in enemiesJson.enemies)
+		foreach (NetworkManager.UserJSON enemyJSON in enemiesJson.enemyPlayers)
 		{
 			Vector3 position = new Vector3(enemyJSON.position[0], enemyJSON.position[1], enemyJSON.position[2]);
 			Quaternion rotation = Quaternion.Euler(enemyJSON.rotation[0], enemyJSON.rotation[1], enemyJSON.rotation[2]);
